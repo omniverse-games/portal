@@ -6,3 +6,7 @@ export const Header = styled.h1`
   color: white;
   font-size: 22px;
 `;
+
+export const SubHeader = styled(Header)`
+  font-size: 12px;
+`;
