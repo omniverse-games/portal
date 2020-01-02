@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "styled-components/macro";
 import { Header, SubHeader } from "../text/Header";
-import { Button } from "../input/Button";
+import { PrimaryButton, buttonSizes } from "../input/Button";
 
 const HeroSection = styled.section`
-  width: 100vw;
+  width: 100%;
   min-height: 400px;
   max-height: 100vh;
   display: flex;
@@ -26,6 +26,19 @@ const HeroSection = styled.section`
 `;
 
 const HeroContainer = styled.div``;
+const HeroHeader = styled(Header)`
+  font-size: 48px;
+  margin: 10px;
+  text-shadow: 1px 1px 1px #654ea3;
+`;
+const HeroSubHeader = styled(SubHeader)`
+  font-size: 20px;
+  margin: 10px;
+  text-shadow: 1px 1px 1px #654ea3;
+`;
+const HeroButton = styled(PrimaryButton)`
+  margin-top: 20px;
+`;
 
 export interface HeroProps {
   title: string;
@@ -42,9 +55,13 @@ export const Hero: React.FunctionComponent<HeroProps> = ({
   return (
     <HeroSection>
       <HeroContainer>
-        <Header>{title}</Header>
-        {subtitle ? <SubHeader>{subtitle}</SubHeader> : undefined}
-        {cta && action ? <Button onClick={action}>{cta}</Button> : null}
+        <HeroHeader>{title}</HeroHeader>
+        {subtitle ? <HeroSubHeader>{subtitle}</HeroSubHeader> : undefined}
+        {cta && action ? (
+          <HeroButton size={buttonSizes.LARGE} onClick={action}>
+            {cta}
+          </HeroButton>
+        ) : null}
       </HeroContainer>
     </HeroSection>
   );

@@ -13,11 +13,7 @@ body {
 h1 {
   margin: 0;
 }
-#root {
-  height: 100%;
-  min-height: 100vh;
-  width: 100%;  
-}
+
 `;
 
 const App: React.FC = () => {

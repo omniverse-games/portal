@@ -4,7 +4,7 @@ export const resources = {
       "app.name": "Omniverse Games",
       "homepage.title": "Infinite Potential, Uniquely Yours",
       "homepage.subtitle":
-        "Create custom games perfectly suited to your tastes",
+        "Customize images and mechanics to create the perfect game for you and your friends",
       "homepage.cta": "Start Creating"
     }
   }
