@@ -6,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
   padding: 0;
-  background-color: darkgrey;
   height: 100%;
   min-height: 100vh;
   width: 100%;

@@ -1,7 +1,11 @@
 export const resources = {
   en: {
     translation: {
-      "homepage.title": "Omniverse Games"
+      "app.name": "Omniverse Games",
+      "homepage.title": "Infinite Potential, Uniquely Yours",
+      "homepage.subtitle":
+        "Create custom games perfectly suited to your tastes",
+      "homepage.cta": "Start Creating"
     }
   }
 };

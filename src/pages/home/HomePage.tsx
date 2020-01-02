@@ -4,13 +4,20 @@ import { Hero } from "../../pattern-library/containers/Hero";
 import { Text } from "../../pattern-library/text/Text";
 
 import { useTranslation } from "react-i18next";
+import { Nav } from "../../components/navigation/Nav";
 
 export const HomePage: React.FunctionComponent = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
-    <Page>
-      <Hero title={t("homepage.title")}></Hero>
-      <div>
+    <>
+      <Nav />
+      <Hero
+        title={t("homepage.title")}
+        subtitle={t("homepage.subtitle")}
+        cta={t("homepage.cta")}
+        action={() => alert("clicked")}
+      ></Hero>
+      <Page>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante
@@ -81,7 +88,7 @@ export const HomePage: React.FunctionComponent = () => {
           est ultricies integer quis auctor. Facilisi nullam vehicula ipsum a
           arcu cursus vitae congue mauris.
         </Text>
-      </div>
-    </Page>
+      </Page>
+    </>
   );
 };
