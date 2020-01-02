@@ -69,7 +69,7 @@ export const Nav = () => {
         size={buttonSizes.SMALL}
         onClick={() => alert("login clicked")}
       >
-        Log In / Sign Up
+        {t("app.authenticate")}
       </BorderlessButton>
     </NavSection>
   );
