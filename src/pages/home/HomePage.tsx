@@ -1,11 +1,13 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
+import { RouteComponentProps } from "@reach/router";
+
 import {
   Container,
   ContainerWidth
 } from "../../pattern-library/containers/Containers";
 import { Hero } from "../../pattern-library/containers/Hero";
 
-import { useTranslation } from "react-i18next";
 import { Nav } from "../../components/navigation/Nav";
 import { ProductFeature } from "../../components/features/ProductFeature";
 import onlineImg from "../../components/features/undraw_ninja_e52b.png";
@@ -13,7 +15,7 @@ import customizeImg from "../../components/features/undraw_playing_cards_cywn.pn
 import socialImg from "../../components/features/undraw_post_online_dkuk.png";
 import shipImg from "../../components/features/undraw_add_to_cart_vkjp.png";
 
-export const HomePage: React.FunctionComponent = () => {
+export const HomePage: React.FunctionComponent<RouteComponentProps> = () => {
   const { t } = useTranslation();
   return (
     <>

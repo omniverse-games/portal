@@ -1,5 +1,7 @@
 import React from "react";
+import { Router } from "@reach/router";
 import { HomePage } from "./pages/home/HomePage";
+import { BattleRoyalePage } from "./pages/games/battle-royale/BattleRoyalePage";
 import { createGlobalStyle } from "styled-components/macro";
 
 const GlobalStyle = createGlobalStyle`
@@ -13,14 +15,16 @@ body {
 h1 {
   margin: 0;
 }
-
 `;
 
 const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <HomePage />
+      <Router>
+        <HomePage path="/" />
+        <BattleRoyalePage path="/games/battle-royale" />
+      </Router>
     </>
   );
 };
