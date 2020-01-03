@@ -1,9 +1,13 @@
 import * as React from "react";
-import { GameState, CARDS } from "./Game";
+import styled from "styled-components";
+import { GameState, GameContext } from "./Game";
+import { PlayerSection } from "./PlayerSection";
+import { Opponents } from "./Opponents";
+import { Battlefield } from "./BattleField";
 
 export interface BoardProps {
   G: GameState;
-  ctx: any;
+  ctx: GameContext;
   isActive: boolean;
   log: any[];
   isConnected: boolean;
@@ -16,31 +20,50 @@ export interface BoardProps {
   events: any;
 }
 
-export const Board: React.FunctionComponent<BoardProps> = props => {
-  console.log("render board", props);
+const Player: React.FunctionComponent<{
+  board: BoardProps;
+  playerID: string;
+}> = ({ board, playerID }) => {
+  const player = board.G.players[playerID];
+  const activeStage =
+    board.ctx.activePlayers && board.ctx.activePlayers[playerID];
+
   return (
     <div>
-      <h1>Battle Royale with cheese</h1>
       <div>
-        <h2>players</h2>
+        player {playerID}: Health: {player.health} {activeStage}
+      </div>
+
+      {activeStage === "defend" || activeStage === "resolve" ? (
         <div>
-          {props.G.hands.map((hand, idx) => {
-            return (
-              <div key={idx}>
-                player {idx}: {renderHand(hand)}
-              </div>
-            );
-          })}
+          <div>DEFEND!</div>
+          <div>roll: {board.G.pendingAttack?.roll}</div>
+          <div>dmg: {board.G.pendingAttack?.dmg}</div>
+          <div>location: {board.G.pendingAttack?.location}</div>
         </div>
-      </div>
-      <div>
-        <h2>deck</h2>
-        <div>{renderHand(props.G.deck)}</div>
-      </div>
+      ) : (
+        undefined
+      )}
     </div>
   );
 };
 
-function renderHand(hand: number[]) {
-  return hand.map(cardId => CARDS[cardId].name + " => ");
-}
+const BoardContainer = styled.div`
+  border: 3px dotted black;
+  margin-bottom: 20px;
+  padding: 20px;
+`;
+
+export const Board: React.FunctionComponent<BoardProps> = props => {
+  console.log("render board", props);
+  return (
+    <BoardContainer>
+      <h1>Board for: {props.playerID}</h1>
+      <div>
+        <Opponents board={props} />
+        <Battlefield board={props} />
+        <PlayerSection board={props} />
+      </div>
+    </BoardContainer>
+  );
+};

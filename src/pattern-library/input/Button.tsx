@@ -36,14 +36,6 @@ const fontObject: { [index: string]: string } = {
   [buttonSizes.LARGE]: "24px"
 };
 
-const lineHeight: { [index: string]: string } = {
-  [buttonSizes.SMALL]: "12px",
-  [buttonSizes.MEDIUM]: "18px",
-  [buttonSizes.NEW_MEDIUM]: "14px",
-  [buttonSizes.MEDIUM_WIDE]: "14px",
-  [buttonSizes.LARGE]: "24px"
-};
-
 export interface ButtonProps {
   size: buttonSizes;
 }

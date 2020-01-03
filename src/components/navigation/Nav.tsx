@@ -5,7 +5,6 @@ import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { fonts } from "../../pattern-library/text/fonts";
 import {
   BorderlessButton,
-  SecondaryButton,
   buttonSizes
 } from "../../pattern-library/input/Button";
 

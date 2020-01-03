@@ -41,6 +41,9 @@ declare module "boardgame.io/ui" {
 }
 
 declare module "boardgame.io/core" {
+  export enum Stage {
+    NULL = "NULL"
+  }
   export type IPlayer = string;
   export class FlowObj {
     ctx: (players: number) => any;
@@ -146,3 +149,5 @@ declare module "boardgame.io/server" {
   function Server<TGameState>(serverArgs: IServerArgs<TGameState>): Koa;
   export = Server;
 }
+
+declare module "boardgame.io/multiplayer";
