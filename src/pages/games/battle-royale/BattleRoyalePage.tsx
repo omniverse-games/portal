@@ -23,6 +23,7 @@ export const BattleRoyalePage: React.FunctionComponent<RouteComponentProps> = ()
       <Game playerID="2" />
       <Game playerID="3" />
       <Game playerID="4" />
+      <Game />
     </div>
   );
 };

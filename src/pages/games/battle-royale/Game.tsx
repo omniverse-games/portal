@@ -239,7 +239,9 @@ function PlayCard(
       ctx.random.Die(attackCard.dmg) + ctx.random.Die(attackCard.modifier);
     if (roll >= attackCard.hit) {
       dmg = Math.ceil(dmg / 2);
-    } else if (roll === 20) {
+    }
+
+    if (roll === 20) {
       dmg = dmg * 2;
     }
 

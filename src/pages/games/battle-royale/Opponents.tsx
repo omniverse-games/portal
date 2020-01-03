@@ -10,15 +10,23 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   > div {
-    width: 125px;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
+`;
+
+interface ContainerProps {
+  isCurrentPlayer: boolean;
+  isProne: boolean;
+}
+const OpponentContainer = styled.div<ContainerProps>`
+  width: 125px;
+  border: ${props => (props.isCurrentPlayer ? "2px" : "1px")} solid black;
+  box-shadow: ${props => (props.isCurrentPlayer ? "2px 5px 9px #aaa;" : "none")}
+  padding: 10px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export interface OpponentsProps {
@@ -29,13 +37,14 @@ export const Opponents: React.FunctionComponent<OpponentsProps> = ({
   board
 }) => {
   const playerID = board.playerID;
-  const opponents = board.ctx.playOrder
-    .filter(id => id !== playerID)
-    .map(id => ({ id, state: board.G.players[id] }));
+  const opponents = board.ctx.playOrder.map(id => ({
+    id,
+    state: board.G.players[id]
+  }));
   return (
     <Container>
       {opponents.map(o => (
-        <Opponent player={o} />
+        <Opponent player={o} board={board} />
       ))}
     </Container>
   );
@@ -43,11 +52,17 @@ export const Opponents: React.FunctionComponent<OpponentsProps> = ({
 
 export const Opponent: React.FunctionComponent<{
   player: { id: string; state: PlayerState };
-}> = ({ player }) => {
+  board: BoardProps;
+}> = ({ player, board }) => {
+  const isCurrentPlayer = player.id === board.ctx.currentPlayer;
+
   return (
-    <div>
+    <OpponentContainer
+      isCurrentPlayer={isCurrentPlayer}
+      isProne={player.state.isProne}
+    >
       <div>Player {player.id}</div>
       <div>{player.state.health}</div>
-    </div>
+    </OpponentContainer>
   );
 };

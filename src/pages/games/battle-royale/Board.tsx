@@ -62,7 +62,7 @@ export const Board: React.FunctionComponent<BoardProps> = props => {
       <div>
         <Opponents board={props} />
         <Battlefield board={props} />
-        <PlayerSection board={props} />
+        {props.playerID ? <PlayerSection board={props} /> : null}
       </div>
     </BoardContainer>
   );
